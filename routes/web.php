@@ -22,3 +22,11 @@ Route::get('/', 'UserController@login');
 
 //Homepage
 Route::get('/homepage', 'HomepageController@index');
+//Update profile, account
+Route::get('/update-profile','HomepageController@profile');
+Route::get('/update-account','HomepageController@account');
+// role
+Route::get('/set-role','RolesController@setRole');
+
+Route::get('/create-role','RolesController@createRole');
+Route::get('/list-role','RolesController@listRole');

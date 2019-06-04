@@ -18,9 +18,11 @@
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
     <!-- <link rel="shortcut icon" href="https://miengthamthucpham.vn/homepage/img/logo.png" type="image/x-icon"/> -->
-    <meta property="og:image" content="https://yt3.ggpht.com/a-/ACSszfG6SiS4096AdxOv4vjhBXJphsGQuBWBBwkLww=s900-mo-c-c0xffffffff-rj-k-no" />
-    <meta property="og:image:secure_url" content="https://yt3.ggpht.com/a-/ACSszfG6SiS4096AdxOv4vjhBXJphsGQuBWBBwkLww=s900-mo-c-c0xffffffff-rj-k-no" />
-
+    <link href="{{ asset('frontend/css/plugins/chosen/bootstrap-chosen.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('frontend/css/plugins/summernote/summernote.css') }}" rel="stylesheet"> -->
+    <link href="{{ asset('frontend/css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link href="{{ asset('frontend/css/plugins/sweetalert/sweetalert.css') }}" rel="stylesheet">
     <link rel="icon" href="{{ asset('homepage/imgs/index.png') }}" />
 
     <style>
@@ -39,7 +41,6 @@
 <body>
 
     <div id="wrapper">
-
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav metismenu" id="side-menu">
@@ -52,14 +53,80 @@
                         </div>
                     </li>
                     <!-- menu -->
-                    <li class="{{($url == 'admin-project' || $url == 'admin-project-edit' || $url == 'admin-project-list-edit' || $url == 'admin-project-list') ? 'active' : ''}}">
-                        <a href="/admin-project"><i class="fa fa-edit"></i> <span class="nav-label">Quản lí dự án</span><span class="fa arrow"></span></a>
+                    <li class="{{($url == 'create-role' || $url == 'list-role' || $url == 'set-role' || $url == '') ? 'active' : ''}}">
+                        <a href="/create-role"><i class="fa fa-edit"></i> <span class="nav-label">Quản lí Role</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li class="{{($url == 'admin-project' || $url == 'admin-project-edit') ? 'active' : ''}}"><a href="/admin-project">Thêm dự án</a></li>
-                            <li class="{{($url == 'admin-project-list' || $url == 'admin-project-list-edit') ? 'active' : ''}}">
-                                <a href="/admin-project-list/">Danh sách dự án</a></li>
+                            <li class="{{($url == 'create-role' || $url == '') ? 'active' : ''}}"><a href="/create-role">Thêm Role</a></li>
+                            <li class="{{($url == 'set-role' || $url == '') ? 'active' : ''}}"><a href="/set-role">Set Role</a></li>
+                            <li class="{{($url == 'list-role' || $url == '') ? 'active' : ''}}">
+                                <a href="/list-role">Danh sách Role</a></li>
                         </ul>
                     </li>
+                    <li class="{{($url == 'update-profile' || $url == 'update-account' || $url == '' || $url == '') ? 'active' : ''}}">
+                        <a href="/update-profile"><i class="fa fa-edit"></i> <span class="nav-label">Cập nhật thông tin</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="{{($url == 'update-profile') ? 'active' : ''}}"><a href="/update-profile">Cập nhật thông tin cá nhân</a></li>
+                            <li class="{{($url == 'update-account') ? 'active' : ''}}">
+                                <a href="/update-account">Cập nhật tài khoản</a></li>
+                        </ul>
+                    </li>
+                    <li class="{{($url == '' || $url == '' || $url == '' || $url == '') ? 'active' : ''}}">
+                        <a href="/"><i class="fa fa-edit"></i> <span class="nav-label">Quản lí tài khoản</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}"><a href="/">Thêm tài khoản</a></li>
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}">
+                                <a href="/">Danh sách tài khoản</a></li>
+                        </ul>
+                    </li>
+                    <li class="{{($url == '' || $url == '' || $url == '' || $url == '') ? 'active' : ''}}">
+                        <a href="/"><i class="fa fa-edit"></i> <span class="nav-label">Quản lí Học kì</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}"><a href="/">Thêm học kì</a></li>
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}">
+                                <a href="/">Danh sách Học kì</a></li>
+                        </ul>
+                    </li>
+                    <li class="{{($url == '' || $url == '' || $url == '' || $url == '') ? 'active' : ''}}">
+                        <a href="/"><i class="fa fa-edit"></i> <span class="nav-label">Quản lí Khối</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}"><a href="/">Thêm Khối</a></li>
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}">
+                                <a href="/">Danh sách Khối</a></li>
+                        </ul>
+                    </li>
+                    <li class="{{($url == '' || $url == '' || $url == '' || $url == '') ? 'active' : ''}}">
+                        <a href="/"><i class="fa fa-edit"></i> <span class="nav-label">Quản lí Lớp</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}"><a href="/">Thêm Lớp</a></li>
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}">
+                                <a href="/">Danh sách Lớp</a></li>
+                        </ul>
+                    </li>
+                    <li class="{{($url == '' || $url == '' || $url == '' || $url == '') ? 'active' : ''}}">
+                        <a href="/"><i class="fa fa-edit"></i> <span class="nav-label">Quản lí Môn học</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}"><a href="/">Thêm Môn học</a></li>
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}">
+                                <a href="/">Danh sách Môn học</a></li>
+                        </ul>
+                    </li>
+                    <li class="{{($url == '' || $url == '' || $url == '' || $url == '') ? 'active' : ''}}">
+                        <a href="/"><i class="fa fa-edit"></i> <span class="nav-label">Quản lí Cán Bộ</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}"><a href="/">Thêm Cán Bộ</a></li>
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}">
+                                <a href="/">Danh sách Cán Bộ</a></li>
+                        </ul>
+                    </li>
+                    <li class="{{($url == '' || $url == '' || $url == '' || $url == '') ? 'active' : ''}}">
+                        <a href="/"><i class="fa fa-edit"></i> <span class="nav-label">Quản lí Học sinh</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}"><a href="/">Thêm học sinh</a></li>
+                            <li class="{{($url == '' || $url == '') ? 'active' : ''}}">
+                                <a href="/">Danh sách Học sinh</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>
         </nav>
@@ -104,6 +171,16 @@
     <script src="{{ asset('frontend/js/plugins/pace/pace.min.js') }}"></script>
     <!-- Toastr -->
     <script src="{{ asset('frontend/js/plugins/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/plugins/summernote/summernote.min.js')}}"></script>
+    <script src="{{ asset('frontend/js/custom-link.js')}}"></script>
+    <script src="{{ asset('frontend/js/custom-summernote.js')}}"></script>
+
+    <!-- Chosen -->
+    <script src="{{ asset('frontend/js/plugins/dataTables/datatables.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/plugins/chosen/chosen.jquery.js') }}"></script>
+    <!-- btn-delete -->
+    <script src="{{ asset('frontend/js/custom-link.js')}}"></script>
+    <script src="{{ asset('frontend/js/plugins/sweetalert/sweetalert.min.js') }}"></script>
 
     @yield('script')
     <script>
@@ -116,7 +193,7 @@
                     showMethod: 'slideDown',
                     timeOut: 2000
                 };
-                toastr.success('{{session('success_message')}}', 'Fanscom Admin');
+                toastr.success('{{session('success_message')}}', 'Admin');
             }, 300);
             @endif
             @if(session('danger_message'))
@@ -127,7 +204,7 @@
                     showMethod: 'slideDown',
                     timeOut: 2000
                 };
-                toastr.error('{{session('danger_message')}}', 'Fanscom Admin');
+                toastr.error('{{session('danger_message')}}', 'Admin');
             }, 300);
             @endif
             @if(session('warning_message'))
@@ -138,7 +215,7 @@
                     showMethod: 'slideDown',
                     timeOut: 1200
                 };
-                toastr.warning('{{session('warning_message')}}', 'Fanscom Admin');
+                toastr.warning('{{session('warning_message')}}', 'Admin');
             }, 300);
             @endif
         });

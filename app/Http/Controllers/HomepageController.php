@@ -17,4 +17,14 @@ class HomepageController extends Controller
           // 'homepage'  =>  $homepage
       ]);
   }
+  public function profile() {
+      return view('homepage.profile')->with([
+          'url' => 'update-profile'
+      ]);
+  }
+  public function account() {
+      return view('homepage.account')->with([
+          'url' => 'update-account'
+      ]);
+  }
 }
