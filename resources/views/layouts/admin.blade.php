@@ -53,15 +53,15 @@
                         </div>
                     </li>
                     <!-- menu -->
-                    <li class="{{($url == 'create-role' || $url == 'list-role' || $url == 'set-role' || $url == '') ? 'active' : ''}}">
+                    <!-- <li class="{{($url == 'create-role' || $url == 'list-role' || $url == 'set-role' || $url == '') ? 'active' : ''}}">
                         <a href="/create-role"><i class="fa fa-star"></i> <span class="nav-label">Quản lí Role</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li class="{{($url == 'create-role' || $url == '') ? 'active' : ''}}"><a href="/create-role">Thêm Role</a></li>
-                            <!-- <li class="{{($url == 'set-role' || $url == '') ? 'active' : ''}}"><a href="/set-role">Set Role</a></li> -->
+                            <li class="{{($url == 'set-role' || $url == '') ? 'active' : ''}}"><a href="/set-role">Set Role</a></li>
                             <li class="{{($url == 'list-role' || $url == '') ? 'active' : ''}}">
                                 <a href="/list-role">Danh sách Role</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="{{($url == 'add-student' || $url == 'list-student' || $url == '' || $url == '') ? 'active' : ''}}">
                         <a href="/"><i class="fa fa-user-secret"></i> <span class="nav-label">Quản lí Học sinh</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">

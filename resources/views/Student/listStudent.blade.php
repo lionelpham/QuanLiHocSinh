@@ -58,9 +58,9 @@
                                             <tr>
                                                 <td>1</td>
                                                 <td>Phạm Hữu Hoàng Việt</td>
-                                                <td>Bê Đê</td>
-                                                <td>13 Cầu thị nghè</td>
+                                                <td>Nữ</td>
                                                 <td>12-3-2019</td>
+                                                <td>13 Cầu thị nghè</td>
                                                 <td>viethonag123@gmail.com</td>
                                                 <td>
                                                     <a style="margin: 5px;" href="/view-student/IDSTUDENT" class="btn btn-info btn-custom" data-id="">Chi tiết</a>

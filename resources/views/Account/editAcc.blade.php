@@ -6,7 +6,7 @@
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Thêm tài khoản</h2>
+        <h2>Chỉnh sửa tài khoản</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="/">Admin</a>
@@ -31,7 +31,7 @@
             <div class="ibox float-e-margins">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Chỉnh sửa</h5>
+                        <h5>Chỉnh sửa tài khoản</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -52,18 +52,26 @@
                     </div>
                     <div class="ibox-content">
                         <form method="get" class="form-horizontal">
-                            <div class="form-group"><label class="col-sm-2 control-label">Tên tài khoản</label>
-
+                            <div class="form-group"><label class="col-sm-2 control-label">Tên cán bộ</label>
                                 <div class="col-sm-10"><input type="text" class="form-control"></div>
                             </div>
-                            <div class="form-group"><label class="col-sm-2 control-label">Mật khẩu</label>
-
-                                <div class="col-sm-10"><input type="password" class="form-control"></div>
+                            <div class="form-group"><label class="col-sm-2 control-label">Giới tính</label>
+                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">Ngày sinh</label>
+                                <div class="col-sm-10"><input type="text" class="form-control"></div>
                             </div>
 
-                            <div class="hr-line-dashed"></div>
+                            <div class="form-group"><label class="col-sm-2 control-label">Địa chỉ</label>
+                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            </div>
+
+                            <div class="form-group"><label class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            </div>
+
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Người dùng (optional)</label>
+                                <label class="col-sm-2 control-label">Role</label>
 
                                 <div class="col-sm-10">
                                     <select data-placeholder="Choose a Country..." class="chosen-select" tabindex="-1" style="display: none;">
@@ -76,6 +84,13 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group"><label class="col-sm-2 control-label">Tên tài khoản</label>
+                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">Mật khẩu</label>
+                                <div class="col-sm-10"><input type="password" class="form-control"></div>
+                            </div>
 
                             <div class="form-group">
                                 <div class="col-lg-12">
@@ -86,6 +101,10 @@
                         </form>
                     </div>
                 </div>
+
+
+
+
             </div>
         </div>
     </div>
