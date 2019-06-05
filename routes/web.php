@@ -50,6 +50,7 @@ Route::get('/add-class', 'ClassromController@addClass');
 Route::get('/list-class', 'ClassromController@listClass');
 Route::get('/view-class/IDCLASS', 'ClassromController@viewClass');
 Route::get('/edit-class/IDCLASS', 'ClassromController@editClass');
+Route::get('/view-class/IDCLASS/IDSUBJECT', 'ClassromController@scoreboardClass');
 
 // subject
 Route::get('/add-subject', 'SubjectController@addSubject');

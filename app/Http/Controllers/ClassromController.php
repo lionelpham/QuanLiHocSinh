@@ -31,4 +31,10 @@ class ClassromController extends Controller
             'url' => 'view-class/IDCLASS'
         ]);
     }
+    public function scoreboardClass()
+    {
+        return view('Class.scoreboardClass')->with([
+            'url' => 'view-class/IDCLASS/IDSUBJECT'
+        ]);
+    }
 }
