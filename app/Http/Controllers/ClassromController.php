@@ -7,79 +7,28 @@ use Illuminate\Http\Request;
 
 class ClassromController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function addClass()
     {
-        //
+        return view('Class.addClass')->with([
+            'url' => 'add-class'
+        ]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function listClass()
     {
-        //
+        return view('Class.listClass')->with([
+            'url' => 'list-class'
+        ]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function editClass()
     {
-        //
+        return view('Class.editClass')->with([
+            'url' => 'edit-class/IDCLASS'
+        ]);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\classrom  $classrom
-     * @return \Illuminate\Http\Response
-     */
-    public function show(classrom $classrom)
+    public function viewClass()
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\classrom  $classrom
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(classrom $classrom)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\classrom  $classrom
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, classrom $classrom)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\classrom  $classrom
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(classrom $classrom)
-    {
-        //
+        return view('Class.viewClass')->with([
+            'url' => 'view-class/IDCLASS'
+        ]);
     }
 }

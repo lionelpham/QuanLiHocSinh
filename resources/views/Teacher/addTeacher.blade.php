@@ -12,10 +12,10 @@
                 <a href="/admin">Admin</a>
             </li>
             <li>
-                <a href="/admin-homepage">Trang chủ</a>
+                <a href="/admin-homepage">Role</a>
             </li>
             <li class="active">
-                <strong>Cập nhật account</strong>
+                <strong>Thêm Role</strong>
             </li>
         </ol>
     </div>
@@ -28,7 +28,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Cập nhật Thông tin cá nhân</h5>
+                    <h5>Thêm Role</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -43,25 +43,21 @@
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}">
                         <div class="form-group">
                             <div>
-                                <label class="control-label" for="maGV">Username</label>
-                                <input type="text" name="maGV" class="form-control" id="maGV" value="" disabled>
+                                <label class="control-label" for="tenRole">Tên Role</label>
+                                <input type="text" name="tenRole" class="form-control" id="tenRole" value="">
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <div>
-                                <label class="control-label" for="passwordGV">Password</label>
-                                <input type="password" name="passwordGV" class="form-control" id="passwordGV" value="">
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn btn-primary pull-right">Thêm</button>
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <button type="submit" class="btn btn-primary pull-right">Cập nhật</button>
-                        </div>
+                    </form>
                 </div>
-                </form>
             </div>
         </div>
     </div>
-</div>
 </div>
 @endsection
 

@@ -7,17 +7,20 @@ use Illuminate\Http\Request;
 
 class RolesController extends Controller
 {
-    public function setRole(){
+    public function setRole()
+    {
         return view('Role.setRole')->with([
-            'url'=> 'set-role'
+            'url' => 'set-role'
         ]);
     }
-    public function createRole(){
+    public function createRole()
+    {
         return view('Role.addRole')->with([
-            'url'=> 'create-role'
+            'url' => 'create-role'
         ]);
     }
-    public function listRole(){
+    public function listRole()
+    {
         return view('Role.listRole')->with([
             'url' => 'list-role'
         ]);
@@ -106,7 +109,5 @@ class RolesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(roles $roles)
-    {
-        //
-    }
+    { }
 }
