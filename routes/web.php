@@ -62,6 +62,9 @@ Route::get('/list-super-user', 'TeacherController@listTeacher');
 
 // student
 Route::get('/add-student', 'StudentController@addStudent');
-Route::get('/edit-student/IDSTUDENT', 'StudentController@editStudent');
+Route::post('/add-student/new','StudentController@newStudent');
+Route::get('/edit-student/{id}', 'StudentController@editStudent');
+Route::post('/edit-student/{id}', 'StudentController@updateStudent');
+
 Route::get('/list-student', 'StudentController@listStudent');
-Route::get('/view-student/IDSTUDENT', 'StudentController@viewStudent');
+Route::get('/list-student/delete/{id}', 'StudentController@deleteStudent');

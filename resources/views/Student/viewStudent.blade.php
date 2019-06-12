@@ -15,7 +15,7 @@
                 <a href="/list-student">Danh sách học sinh</a>
             </li>
             <li class="active">
-                <strong>Học sinh: IDSTUDENT</strong>
+                <strong>Học sinh: {{$student->nameStudent}}</strong>
             </li>
         </ol>
     </div>
@@ -52,7 +52,7 @@
                         <form method="get" class="form-horizontal">
                             <div class="form-group"><label class="col-sm-2 control-label">Tên học sinh</label>
 
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" name="{{$student->nameStudent}}" disabled></div>
                             </div>
 
                             <div class="form-group"><label class="col-sm-2 control-label">Giới tính <br>

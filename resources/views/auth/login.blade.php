@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FANSCOM Admin | Login</title>
+    <title>VT Admin | Login</title>
 
     <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/font-awesome/css/font-awesome.css') }}" rel="stylesheet">

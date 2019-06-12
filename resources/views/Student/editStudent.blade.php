@@ -15,7 +15,7 @@
                 <a href="/list-student">Danh sách học sinh</a>
             </li>
             <li class="active">
-                <strong>chỉnh sửa học sinh: IDSTUDENT</strong>
+                <strong>Chỉnh sửa học sinh: {{$student->nameStudent}}</strong>
             </li>
         </ol>
     </div>
@@ -49,23 +49,31 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <form method="get" class="form-horizontal">
+                        <form method="POST" action="/edit-student/{{$student->id}}" class="form-horizontal" enctype="multipart/form-data">
+                            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+
                             <div class="form-group"><label class="col-sm-2 control-label">Tên học sinh</label>
 
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" name="nameStudent" value="{{$student->nameStudent}}"></div>
                             </div>
 
                             <div class="form-group"><label class="col-sm-2 control-label">Giới tính <br>
                                 </label>
 
                                 <div class="col-sm-10">
-                                    <label> <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios">Nam</label>
-                                    <label> <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios">Nữ</label>
+                                    @if($student->sexual == 'male')
+                                    <label> <input type="radio" checked value="male" id="optionsRadios1" name="optionsRadios">Nam</label>
+                                    <label> <input type="radio" value="female" id="optionsRadios2" name="optionsRadios">Nữ</label>
+
+                                    @else
+                                    <label> <input type="radio" value="male" id="optionsRadios1" name="optionsRadios">Nam</label>
+                                    <label> <input type="radio" value="female" id="optionsRadios2" name="optionsRadios" checked>Nữ</label>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">Ngày sinh</label>
 
-                                <div class="col-sm-10"><input type="date" class="form-control"></div>
+                                <div class="col-sm-10"><input type="date" class="form-control" name="dob" value="{{$student->date_of_birth}}"></div>
                             </div>
 
 
@@ -73,10 +81,7 @@
                             <div class="hr-line-dashed"></div>
 
                             <div class="form-group"><label class="col-sm-2 control-label">Địa chỉ</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
-                            </div>
-                            <div class="form-group"><label class="col-sm-2 control-label">Email</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" name="address" value="{{$student->address}}"></div>
                             </div>
 
                             <div class="form-group">

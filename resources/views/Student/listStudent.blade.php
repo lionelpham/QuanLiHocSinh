@@ -49,26 +49,32 @@
                                                 <th>Giới tính</th>
                                                 <th>Ngày sinh</th>
                                                 <th>Địa chỉ</th>
-                                                <th>Email</th>
+
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            @foreach ($listStudent as $listStu)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Phạm Hữu Hoàng Việt</td>
-                                                <td>Nữ</td>
-                                                <td>12-3-2019</td>
-                                                <td>13 Cầu thị nghè</td>
-                                                <td>viethonag123@gmail.com</td>
+                                                <td>{{$listStu->id}}</td>
+                                                <td>{{$listStu->nameStudent}}</td>
                                                 <td>
-                                                    <a style="margin: 5px;" href="/view-student/IDSTUDENT" class="btn btn-info btn-custom" data-id="">Chi tiết</a>
-                                                    <a style="margin: 5px;" href="/edit-student/IDSTUDENT" class="btn btn-warning btn-custom">Cập nhật</a>
-                                                    <button class="btn btn-danger btn-custom btn-delete" data-id="">Xóa</button>
+                                                    @if($listStu->sexual == 'male')
+                                                        Nam
+                                                    @else
+                                                        Nữ
+                                                    @endif
+                                                </td>
+                                                <td>{{$listStu->date_of_birth}}</td>
+                                                <td>{{$listStu->address}}</td>
+
+                                                <td>
+                                                    
+                                                    <a style="margin: 5px;" href="/edit-student/{{$listStu->id}}" class="btn btn-warning btn-custom">Cập nhật</a>
+                                                    <button class="btn btn-danger btn-custom btn-delete" data-id="{{$listStu->id}}">Xóa</button>
                                                 </td>
                                             </tr>
-
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -99,7 +105,7 @@ dom: '<"html5buttons"B>lTfgitp',
             var id = $(this).data('id');
             swal({
                     title: "Bạn có chắc chắn xóa không?",
-                    text: "Dự án sau khi xóa sẽ không hồi phục lại được.",
+                    text: "Sau khi xóa sẽ không hồi phục lại được.",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
@@ -110,10 +116,10 @@ dom: '<"html5buttons"B>lTfgitp',
                 },
                 function(isConfirm) {
                     if (isConfirm) {
-                        swal("Đã xóa!", "Dự án đã được xóa.", "success");
-                        window.location.href = "/admin-project-list/delete/" + id;
+                        swal("Đã xóa!", "", "success");
+                        window.location.href = "/list-student/delete/" + id;
                     } else {
-                        swal("Đã hủy", "Dự án đã được giữ lại", "error");
+                        swal("Đã hủy", "", "error");
                     }
                 });
         });
