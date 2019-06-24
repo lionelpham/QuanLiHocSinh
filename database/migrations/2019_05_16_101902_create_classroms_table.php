@@ -14,11 +14,15 @@ class CreateClassromsTable extends Migration
     public function up()
     {
         Schema::create('classroms', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('name_class');
             $table->integer('size_of_class');
-            $table->integer('maKhoi');
-            $table->integer('maGV');
+            $table->integer('maKhoi')->unsigned()->nullable();
+
+            $table->integer('maGV')->unsigned()->nullable();
+
+            $table->integer('maHK')->unsigned()->nullable();
+
             $table->timestamps();
         });
     }

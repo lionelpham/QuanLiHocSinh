@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMObjectSemestersTable extends Migration
+class CreateMObjectTeachersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateMObjectSemestersTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_object_semesters', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('m_object_teachers', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('maMH')->unsigned()->nullable();
+
+            $table->integer('maGV')->unsigned()->nullable();
+
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateMObjectSemestersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_object_semesters');
+        Schema::dropIfExists('m_object_teachers');
     }
 }

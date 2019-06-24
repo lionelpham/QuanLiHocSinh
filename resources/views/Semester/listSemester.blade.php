@@ -6,7 +6,7 @@
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Danh sách Role</h2>
+        <h2>Danh sách Học kì</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="/admin">Admin</a>
@@ -15,7 +15,7 @@
                 <a href="/admin-homepage">Trang chủ</a>
             </li>
             <li class="active">
-                <strong>Danh sách Role</strong>
+                <strong>Danh sách Học kì</strong>
             </li>
         </ol>
     </div>
@@ -29,7 +29,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Danh sách Role</h5>
+                    <h5>Danh sách Học kì</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -55,18 +55,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            @foreach($listSemester as $lsemester)
                                             <tr>
-                                                <td>1</td>
-                                                <td>HK1-2019-2020</td>
-                                                <td>1-1-2019</td>
-                                                <td>1-1-2020</td>
-                                                <td>
 
-                                                    <button class="btn btn-danger btn-custom btn-delete" data-id="">Xóa</button>
+                                                <td>{{$lsemester->id}}</td>
+                                                <td>{{$lsemester->name}}</td>
+                                                <td>{{$lsemester->year_from}}</td>
+                                                <td>{{$lsemester->year_to}}</td>
+                                                <td>
+                                                    <a style="margin: 5px;" href="/list-semester/edit-semester/{{$lsemester->id}}" class="btn btn-warning btn-custom">Cập nhật</a>
+                                                    <button class="btn btn-danger btn-custom btn-delete" data-id="{{$lsemester->id}}">Xóa</button>
                                                 </td>
                                             </tr>
-
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -97,7 +98,7 @@ dom: '<"html5buttons"B>lTfgitp',
             var id = $(this).data('id');
             swal({
                     title: "Bạn có chắc chắn xóa không?",
-                    text: "Dự án sau khi xóa sẽ không hồi phục lại được.",
+                    text: "Sau khi xóa sẽ không hồi phục lại được.",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
@@ -108,10 +109,10 @@ dom: '<"html5buttons"B>lTfgitp',
                 },
                 function(isConfirm) {
                     if (isConfirm) {
-                        swal("Đã xóa!", "Dự án đã được xóa.", "success");
-                        window.location.href = "/admin-project-list/delete/" + id;
+                        swal("Đã xóa!", "Đã được xóa.", "success");
+                        window.location.href = "/list-semester/delete/" + id;
                     } else {
-                        swal("Đã hủy", "Dự án đã được giữ lại", "error");
+                        swal("Đã hủy", "Đã được giữ lại", "error");
                     }
                 });
         });

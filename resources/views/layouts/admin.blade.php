@@ -53,15 +53,15 @@
                         </div>
                     </li>
                     <!-- menu -->
-                    <!-- <li class="{{($url == 'create-role' || $url == 'list-role' || $url == 'set-role' || $url == '') ? 'active' : ''}}">
+                    <li class="{{($url == 'create-role' || $url == 'list-role' || $url == 'set-role' || $url == '') ? 'active' : ''}}">
                         <a href="/create-role"><i class="fa fa-star"></i> <span class="nav-label">Quản lí Role</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li class="{{($url == 'create-role' || $url == '') ? 'active' : ''}}"><a href="/create-role">Thêm Role</a></li>
-                            <li class="{{($url == 'set-role' || $url == '') ? 'active' : ''}}"><a href="/set-role">Set Role</a></li>
+
                             <li class="{{($url == 'list-role' || $url == '') ? 'active' : ''}}">
                                 <a href="/list-role">Danh sách Role</a></li>
                         </ul>
-                    </li> -->
+                    </li>
                     <li class="{{($url == 'add-student' || $url == 'list-student' || $url == '' || $url == '') ? 'active' : ''}}">
                         <a href="/"><i class="fa fa-user-secret"></i> <span class="nav-label">Quản lí Học sinh</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
@@ -110,14 +110,14 @@
                                 <a href="/list-grade">Danh sách Khối</a></li>
                         </ul>
                     </li>
-                    <li class="{{($url == 'update-profile' || $url == 'update-account' || $url == '' || $url == '') ? 'active' : ''}}">
+                    <!-- <li class="{{($url == 'update-profile' || $url == 'update-account' || $url == '' || $url == '') ? 'active' : ''}}">
                         <a href="/update-profile"><i class="fa fa-edit"></i> <span class="nav-label">Cập nhật thông tin</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li class="{{($url == 'update-profile') ? 'active' : ''}}"><a href="/update-profile">Cập nhật thông tin cá nhân</a></li>
                             <li class="{{($url == 'update-account') ? 'active' : ''}}">
                                 <a href="/update-account">Cập nhật tài khoản</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <!-- <li class="{{($url == 'add-super-user' || $url == 'list-super-user' || $url == '' || $url == '') ? 'active' : ''}}">
                         <a href="/"><i class="fa fa-address-card"></i> <span class="nav-label">Quản lí Cán Bộ</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
@@ -193,8 +193,7 @@
                     showMethod: 'slideDown',
                     timeOut: 2000
                 };
-                toastr.success('{{session('
-                    success_message ')}}', 'Admin');
+                toastr.success('{{session('success_message')}}', 'Admin');
             }, 300);
             @endif
             @if(session('danger_message'))
@@ -205,8 +204,7 @@
                     showMethod: 'slideDown',
                     timeOut: 2000
                 };
-                toastr.error('{{session('
-                    danger_message ')}}', 'Admin');
+                toastr.error('{{session('danger_message')}}', 'Admin');
             }, 300);
             @endif
             @if(session('warning_message'))
@@ -217,8 +215,7 @@
                     showMethod: 'slideDown',
                     timeOut: 1200
                 };
-                toastr.warning('{{session('
-                    warning_message ')}}', 'Admin');
+                toastr.warning('{{session('warning_message')}}', 'Admin');
             }, 300);
             @endif
         });

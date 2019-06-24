@@ -15,18 +15,40 @@ class RolesController extends Controller
     }
     public function createRole()
     {
+
         return view('Role.addRole')->with([
             'url' => 'create-role'
         ]);
     }
+    public function newRole(Request $req){
+        $newRoles = new roles;
+        $newRoles->name_roles = $req->name_role;
+        $newRoles->save();
+
+        return redirect('list-role')->with(
+            'success_message','Thêm role thành công'
+        );
+
+    }
     public function listRole()
     {
+        $roles = roles::all();
         return view('Role.listRole')->with([
-            'url' => 'list-role'
+            'url' => 'list-role',
+            'listRoles' => $roles
         ]);
     }
 
+    public function deleteRole($id){
+        $role = roles::find($id);
+        $role->delete();
+        return redirect('list-role')->with(
+            'success_message',
+            "Xóa thành công"
 
+        );
+
+    }
 
 
 

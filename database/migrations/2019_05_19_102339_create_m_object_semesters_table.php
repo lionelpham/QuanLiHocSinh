@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGradesTable extends Migration
+class CreateMObjectSemestersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,17 @@ class CreateGradesTable extends Migration
      */
     public function up()
     {
-        Schema::create('grades', function (Blueprint $table) {
+        Schema::create('m_object_semesters', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name_grade');
-            $table->integer('maximun_class');
+            $table->integer('maHK')->unsigned()->nullable();
+
+
+            $table->integer('maMH')->unsigned()->nullable();
+
+
+            $table->integer('maLop')->unsigned()->nullable();
+
+
             $table->timestamps();
         });
     }
@@ -28,6 +35,6 @@ class CreateGradesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grades');
+        Schema::dropIfExists('m_object_semesters');
     }
 }

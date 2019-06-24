@@ -36,11 +36,13 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal" method="POST" action="/" enctype="multipart/form-data">
+                    <form class="form-horizontal" method="POST" action="/add-grade/new-grade" enctype="multipart/form-data">
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}">
                         <div class="form-group"><label class="col-sm-2 control-label">Tên Khối</label>
-
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="name_grade" required></div>
+                        </div>
+                        <div class="form-group"><label class="col-sm-2 control-label">Số lượng lớp</label>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="amount_class" required></div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-12">

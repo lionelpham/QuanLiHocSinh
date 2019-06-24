@@ -45,26 +45,27 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Tên TK</th>
-                                                <th>Mật khẩu</th>
                                                 <th>Người sử dụng</th>
                                                 <th>Mã cán bộ</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            @foreach($listAccount as $lAcc)
                                             <tr>
-                                                <td>1</td>
-                                                <td>giaovientoan1</td>
-                                                <td>matkhaugiaovientoan1</td>
-                                                <td>Trần Trung Thanh</td>
-                                                <td>CB006T1</td>
+                                                <td>{{$lAcc->id}}</td>
+                                                <td>{{$lAcc->name}}</td>
                                                 <td>
-                                                    <a style="margin: 5px;" href="/edit-account/IDACCOUNT" class="btn btn-warning btn-custom">Cập nhật</a>
-                                                    <button style="margin: 5px;" class="btn btn-warning btn-custom">Vô hiệu hóa</button>
-                                                    <button class="btn btn-danger btn-custom btn-delete" data-id="">Xóa</button>
+                                                    {{App\teacher::where(['id'=>$lAcc->maGV])->first()->name_teacher}}
+
+                                                </td>
+                                                <td>{{$lAcc->maGV}}</td>
+                                                <td>
+                                                    <a style="margin: 5px;" href="list-account/edit-account/{{App\teacher::where(['id'=>$lAcc->maGV])->first()->id}}" class="btn btn-warning btn-custom">Cập nhật</a>
+                                                    <button class="btn btn-danger btn-custom btn-delete" data-id="{{App\teacher::where(['id'=>$lAcc->maGV])->first()->id}}">Xóa</button>
                                                 </td>
                                             </tr>
+                                            @endforeach
 
                                         </tbody>
                                     </table>
@@ -96,7 +97,7 @@ dom: '<"html5buttons"B>lTfgitp',
             var id = $(this).data('id');
             swal({
                     title: "Bạn có chắc chắn xóa không?",
-                    text: "Dự án sau khi xóa sẽ không hồi phục lại được.",
+                    text: "Sau khi xóa sẽ không hồi phục lại được.",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
@@ -107,10 +108,10 @@ dom: '<"html5buttons"B>lTfgitp',
                 },
                 function(isConfirm) {
                     if (isConfirm) {
-                        swal("Đã xóa!", "Dự án đã được xóa.", "success");
-                        window.location.href = "/admin-project-list/delete/" + id;
+                        swal("Đã xóa!", "Đã được xóa.", "success");
+                        window.location.href = "/list-account/delete/" + id;
                     } else {
-                        swal("Đã hủy", "Dự án đã được giữ lại", "error");
+                        swal("Đã hủy", "Đã được giữ lại", "error");
                     }
                 });
         });

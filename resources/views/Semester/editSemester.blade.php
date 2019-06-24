@@ -12,7 +12,7 @@
                 <a href="/">Học kỳ</a>
             </li>
             <li class="active">
-                <strong>Thêm học kỳ</strong>
+                <strong>Cập nhật học kỳ</strong>
             </li>
         </ol>
     </div>
@@ -25,7 +25,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Thêm học kỳ mới</h5>
+                    <h5>Cập nhật học kỳ mới</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -36,17 +36,18 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal" method="POST" action="/add-semester/new-semester" enctype="multipart/form-data">
+                    <form class="form-horizontal" method="POST" action="/list-semester/edit-semester/{{$semester->id}}" enctype="multipart/form-data">
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}">
                         <div class="form-group"><label class="col-sm-2 control-label">Tên học kỳ</label>
 
-                            <div class="col-sm-10"><input type="text" class="form-control" name="name_semester"></div>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="name_semester" value="{{$semester->name}}"></div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Thời gian</label>
-                            <div class="col-sm-4"><input type="date" class="form-control" name="date_from"></div>
+                            <div class="col-sm-4"><input type="date" class="form-control" name="date_from" value="{{$semester->year_from}}"></div>
                             <span class="col-sm-2 text-center">-</span>
-                            <div class="col-sm-4"><input type="date" class="form-control" name="date_to"></div>
+                            <div class="col-sm-4"><input type="date" class="form-control" name="date_to" value="{{$semester->year_to}}"></div>
                         </div>
 
                         <div class="form-group">

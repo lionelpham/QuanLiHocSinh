@@ -49,22 +49,20 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Tên Role</th>
-                                                <th>Mã Giáo Viên</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            @foreach($listRoles as $roles)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Hiệu Trưởng</td>
-                                                <td>1</td>
+                                                <td>{{$roles->id}}</td>
+                                                <td>{{$roles->name_roles}}</td>
+
                                                 <td>
-                                                    <a style="margin: 5px;" href="" class="btn btn-warning btn-custom">Cập nhật</a>
-                                                    <button class="btn btn-danger btn-custom btn-delete" data-id="">Xóa</button>
+                                                    <button class="btn btn-danger btn-custom btn-delete" data-id="{{$roles->id}}">Xóa</button>
                                                 </td>
                                             </tr>
-
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -99,7 +97,7 @@
         var id = $(this).data('id');
         swal({
                 title: "Bạn có chắc chắn xóa không?",
-                text: "Dự án sau khi xóa sẽ không hồi phục lại được.",
+                text: "Sau khi xóa sẽ không hồi phục lại được.",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -110,10 +108,10 @@
             },
             function(isConfirm) {
                 if (isConfirm) {
-                    swal("Đã xóa!", "Dự án đã được xóa.", "success");
-                    window.location.href = "/admin-project-list/delete/" + id;
+                    swal("Đã xóa!", "Xóa thành công", "success");
+                    window.location.href = "/list-roles/delete/" + id;
                 } else {
-                    swal("Đã hủy", "Dự án đã được giữ lại", "error");
+                    swal("Đã hủy", "Hủy xóa", "error");
                 }
             });
     });

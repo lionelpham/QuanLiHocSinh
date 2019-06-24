@@ -15,7 +15,7 @@
                 <a href="/list-class">Danh sách lớp</a>
             </li>
             <li class="active">
-                <strong>Lớp IDCLASS</strong>
+                <strong>Lớp {{$classrom->name_class}}</strong>
             </li>
         </ol>
     </div>
@@ -25,49 +25,6 @@
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
-
-
-
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Thông tin chung</h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="ibox-content">
-                    <form class="form-horizontal" method="POST" action="/" enctype="multipart/form-data">
-                        <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}">
-                        <div class="form-group"><label class="col-sm-2 control-label">Tên Lớp</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">Giáo viên chủ nhiệm</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">Khối</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">Học kỳ</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <button type="submit" class="btn btn-warning pull-right" style="margin-left: 10px">Chỉnh sửa</button>
-                                <button type="submit" class="btn btn-info pull-right">Xuất báo cáo tổng kết lớp</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -94,25 +51,24 @@
                                                 <th>Giới tính</th>
                                                 <th>Ngày sinh</th>
                                                 <th>Địa chỉ</th>
-                                                <th>Email</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            @foreach($listStudent as $stu)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Phạm Hữu Hoàng Việt</td>
-                                                <td>Nữ</td>
-                                                <td>12-3-2019</td>
-                                                <td>13 Cầu thị nghè</td>
-                                                <td>viethonag123@gmail.com</td>
+                                                <td>{{$stu->id}}</td>
+                                                <td>{{$stu->nameStudent}}</td>
+                                                <td>{{$stu->sexual}}</td>
+                                                <td>{{$stu->date_of_birth}}</td>
+                                                <td>{{$stu->address}}</td>
+
                                                 <td>
-                                                    <a style="margin: 5px;" href="/view-student/IDSTUDENT" class="btn btn-info btn-custom" data-id="">Chi tiết</a>
-                                                    <button class="btn btn-danger btn-custom btn-delete" data-id="">Xóa khỏi lớp</button>
+                                                    <!-- <a style="margin: 5px;" href="/view-student/{{$stu->id}}" class="btn btn-info btn-custom" data-id="{{$stu->id}}">Chi tiết</a> -->
+                                                    <!-- <button class="btn btn-danger btn-custom btn-delete" data-id="">Xóa khỏi lớp</button> -->
                                                 </td>
                                             </tr>
-
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -146,22 +102,20 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Môn</th>
-                                                <th>Tỉ lệ đạt</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            @foreach($listSubject as $subj)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Toán</td>
-                                                <td>-</td>
+                                                <td>{{$subj->id}}</td>
+                                                <td>{{$subj->nameObject}}</td>
                                                 <td>
-                                                    <button style="margin: 5px;" href="/" class="btn btn-info btn-custom" data-id="">Báo cáo tổng kết môn</button>
-                                                    <a style="margin: 5px;" href="/view-class/IDCLASS/IDSUBJECT" class="btn btn-info btn-custom" data-id="">Xem bảng điểm</a>
+                                                    <a style="margin: 5px;" href="/view-class/{{$classrom->id}}/{{$subj->id}}/input-score" class="btn btn-danger btn-custom" data-id="">Nhập điểm</a>
+                                                    <a style="margin: 5px;" href="/view-class/{{$classrom->id}}/{{$subj->id}}" class="btn btn-info btn-custom" data-id="">Xem bảng điểm</a>
                                                 </td>
                                             </tr>
-
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

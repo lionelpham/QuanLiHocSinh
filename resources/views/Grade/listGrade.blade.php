@@ -49,19 +49,22 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Tên Khối</th>
+                                                <th>Số lượng lớp</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            @foreach($listGrade as $lgrade)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Khôi 10</td>
+                                                <td>{{$lgrade->id}}</td>
+                                                <td>{{$lgrade->name_grade}}</td>
+                                                <td>{{$lgrade->maximun_class}}</td>
                                                 <td>
-                                                    <button class="btn btn-danger btn-custom btn-delete" data-id="">Xóa</button>
+                                                    <a style="margin: 5px;" href="/list-grade/edit-grade/{{$lgrade->id}}" class="btn btn-warning btn-custom">Cập nhật</a>
+                                                    <button class="btn btn-danger btn-custom btn-delete" data-id="{{$lgrade->id}}">Xóa</button>
                                                 </td>
                                             </tr>
-
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -92,7 +95,7 @@ dom: '<"html5buttons"B>lTfgitp',
             var id = $(this).data('id');
             swal({
                     title: "Bạn có chắc chắn xóa không?",
-                    text: "Dự án sau khi xóa sẽ không hồi phục lại được.",
+                    text: "Sau khi xóa sẽ không hồi phục lại được.",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
@@ -103,10 +106,10 @@ dom: '<"html5buttons"B>lTfgitp',
                 },
                 function(isConfirm) {
                     if (isConfirm) {
-                        swal("Đã xóa!", "Dự án đã được xóa.", "success");
-                        window.location.href = "/admin-project-list/delete/" + id;
+                        swal("Đã xóa!", "Đã được xóa.", "success");
+                        window.location.href = "/list-grade/delete/" + id;
                     } else {
-                        swal("Đã hủy", "Dự án đã được giữ lại", "error");
+                        swal("Đã hủy", "Đã được giữ lại", "error");
                     }
                 });
         });

@@ -14,7 +14,7 @@ class CreateObjectsTable extends Migration
     public function up()
     {
         Schema::create('objects', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('nameObject');
             $table->float('score_passed');
             $table->timestamps();

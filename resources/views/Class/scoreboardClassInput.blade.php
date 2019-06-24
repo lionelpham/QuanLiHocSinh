@@ -45,35 +45,41 @@
                 <div class="ibox-content ">
                     <div>
                         <div class="ibox float-e-margins">
-                            <div class="ibox-content">
-                                <div class="table-responsive">
-                                    <table class="table dataTables">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Tên học sinh</th>
-                                                <th>Trung bình</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($scoreBoard as $score)
-                                            <tr>
-                                                <td>{{$score->id}}</td>
-                                                <td>
+                            <form class="form-horizontal" method="POST" action="/view-class/update-score/{{$classrom->id}}/{{$subject->id}}" enctype="multipart/form-data">
+                                <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}">
+                                <div class="ibox-content">
+                                    <div class="table-responsive">
+                                        <table class="table dataTables">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Tên học sinh</th>
+                                                    <th>Trung bình</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($scoreBoard as $score)
+                                                <tr>
+                                                    <td>{{$score->id}}</td>
+                                                    <td>
 
-                                                {{App\student::where(['id'=>$score->maHS])->first()->nameStudent}}
-                                            </td>
-                                                <td>{{$score->score}}</td>
-                                                <td>
-                                                    <!-- <a style="margin: 5px;" href="/view-student/IDSTUDENT" class="btn btn-info btn-custom" data-id="">Thông tin học sinh</a> -->
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                                    {{App\student::where(['id'=>$score->maHS])->first()->nameStudent}}
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" name="{{$score->id}}" value="{{$score->score}}" min="0" step="0.01" max="10">
+                                                    </td>
+                                                    <td>
+                                                        <!-- <a style="margin: 5px;" href="/view-student/IDSTUDENT" class="btn btn-info btn-custom" data-id="">Thông tin học sinh</a> -->
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
+                                <button type="submit" class="btn btn-primary pull-right">Cập nhật điểm</button>
+                            </form>
                         </div>
                     </div>
                 </div>

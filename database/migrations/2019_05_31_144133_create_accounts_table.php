@@ -14,10 +14,12 @@ class CreateAccountsTable extends Migration
     public function up()
     {
         Schema::create('accounts', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('username');
             $table->string('password');
-            $table->integer('maGV');
+            $table->string('email');
+            $table->integer('maGV')->unsigned()->nullable();
+
             $table->timestamps();
         });
     }

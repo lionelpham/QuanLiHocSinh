@@ -36,10 +36,10 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal" method="POST" action="/" enctype="multipart/form-data">
+                    <form class="form-horizontal" method="POST" action="/create-role/new" enctype="multipart/form-data">
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}">
                         <div class="form-group"><label class="col-sm-2 control-label">Tên Role</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="name_role"></div>
                         </div>
 
                         <div class="form-group">

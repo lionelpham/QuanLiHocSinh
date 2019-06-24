@@ -36,38 +36,32 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal" method="POST" action="/" enctype="multipart/form-data">
+                    <form class="form-horizontal" method="POST" action="/add-class/new" enctype="multipart/form-data">
                         <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}">
                         <div class="form-group"><label class="col-sm-2 control-label">Tên Lớp</label>
-                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="name_class"></div>
                         </div>
-
+                        <div class="form-group"><label class="col-sm-2 control-label">Sĩ số tối đa</label>
+                            <div class="col-sm-10"><input type="number" class="form-control" name="maxSize_class"></div>
+                        </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Giáo viên chủ nhiệm</label>
-
                             <div class="col-sm-10">
-                                <select data-placeholder="Choose a Country..." class="chosen-select" tabindex="-1" style="display: none;">
-                                    <option value="">Chọn...</option>
-                                    <option value="Wallis and Futuna">Wallis and Futuna</option>
-                                    <option value="Western Sahara">Western Sahara</option>
-                                    <option value="Yemen">Yemen</option>
-                                    <option value="Zambia">Zambia</option>
-                                    <option value="Zimbabwe">Zimbabwe</option>
+                                <select name="ma_GVCN" data-placeholder="Choose a Country..." class="chosen-select" tabindex="-1" style="display: none;">
+                                    @foreach($teacher as $teach)
+                                    <option value="{{$teach->id}}">{{$teach->name_teacher}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Khối</label>
-
                             <div class="col-sm-10">
-                                <select data-placeholder="Choose a Country..." class="chosen-select" tabindex="-1" style="display: none;">
-                                    <option value="">Chọn...</option>
-                                    <option value="Wallis and Futuna">Wallis and Futuna</option>
-                                    <option value="Western Sahara">Western Sahara</option>
-                                    <option value="Yemen">Yemen</option>
-                                    <option value="Zambia">Zambia</option>
-                                    <option value="Zimbabwe">Zimbabwe</option>
+                                <select name="ma_grade" data-placeholder="Choose a Country..." class="chosen-select" tabindex="-1" style="display: none;">
+                                    @foreach($grade as $gra)
+                                    <option value="{{$gra->id}}">{{$gra->name_grade}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -75,39 +69,14 @@
                             <label class="col-sm-2 control-label">Học kỳ</label>
 
                             <div class="col-sm-10">
-                                <select data-placeholder="Chọn..." class="chosen-select" tabindex="-1" style="display: none;">
-                                    <option value="">Chọn...</option>
-                                    <option value="Wallis and Futuna">Wallis and Futuna</option>
-                                    <option value="Western Sahara">Western Sahara</option>
-                                    <option value="Yemen">Yemen</option>
-                                    <option value="Zambia">Zambia</option>
-                                    <option value="Zimbabwe">Zimbabwe</option>
+                                <select name="ma_semester" data-placeholder="Chọn..." class="chosen-select" tabindex="-1" style="display: none;">
+                                    @foreach($semester as $seme)
+                                    <option value="{{$seme->id}}">{{$seme->name}}: {{$seme->year_from}} - {{$seme->year_to}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Thành viên</label>
-
-                            <div class="col-sm-10">
-                                <select data-placeholder="Chọn..." class="chosen-select" multiple="" style="width: 350px; display: none;" tabindex="-1">
-                                    <option value="">Select</option>
-                                    <option value="Zambia">Zambia</option>
-                                    <option value="Zimbabwe">Zimbabwe</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Môn học</label>
-                            <div class="col-sm-10">
-                                <select data-placeholder="Chọn..." class="chosen-select" multiple="" style="width: 350px; display: none;" tabindex="-1">
-                                    <option value="">Select</option>
-                                    <option value="Zambia">Zambia</option>
-                                    <option value="Zimbabwe">Zimbabwe</option>
-                                </select>
-                            </div>
-
-                        </div>
 
                         <div class="form-group">
                             <div class="col-lg-12">

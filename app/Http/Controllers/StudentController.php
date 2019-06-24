@@ -19,12 +19,12 @@ class StudentController extends Controller
         $student->sexual = $request->optionsRadios;
         $student->date_of_birth = $request->dob;
         $student->address = $request->address;
-        $student->maLop = 0;
+        // $student->maLop = 0;
+
         $student->save();
         return redirect('add-student')->with(
             'success_message',
             "Cập nhật thành công"
-
         );
     }
     public function listStudent()

@@ -46,30 +46,46 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Tên lớp</th>
-                                                <th>Giáo viên</th>
+                                                <th>Giáo viên chủ nhiệm</th>
                                                 <th>Khối</th>
                                                 <th>Học kỳ</th>
                                                 <th>Số lượng học sinh</th>
-                                                <th>Số lượng môn</th>
+                                                <th>Số lượng tối đa</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($classrom as $class)
                                             <tr>
-                                                <td>1</td>
-                                                <td>10A3</td>
-                                                <td>Lê Văn Tư</td>
-                                                <td>Khối 10</td>
-                                                <td>HK1-2018-2019</td>
-                                                <td>43</td>
-                                                <td>12</td>
+                                                <td>{{$class->id}}</td>
+                                                <td>{{$class->name_class}}</td>
                                                 <td>
-                                                    <a style="margin: 5px;" href="/view-class/IDCLASS" class="btn btn-info btn-custom">Chi tiết</a>
-                                                    <a style="margin: 5px;" href="/edit-class/IDCLASS" class="btn btn-warning btn-custom">Cập nhật</a>
-                                                    <button class="btn btn-danger btn-custom btn-delete" data-id="">Xóa</button>
-                                                    <button style="margin: 5px;" class="btn btn-info btn-custom">Báo cáo TK Lớp</button>
+
+                                                    {{App\teacher::where(['id'=>$class->maGV])->first()->name_teacher}}
+
+                                                </td>
+                                                <td>
+                                                    {{App\grade::where(['id'=>$class->maKhoi])->first()->name_grade}}
+
+                                                </td>
+                                                <td>
+                                                    {{App\semester::where(['id'=>$class->maHK])->first()->year_from}}
+                                                    -
+                                                    {{App\semester::where(['id'=>$class->maHK])->first()->year_to}}
+                                                </td>
+                                                <td>
+                                                    {{count(App\student::where(['maLop'=>$class->id])->get())}}
+                                                </td>
+                                                <td>{{$class->size_of_class}}</td>
+                                                <td>
+                                                    <a style="margin: 5px;" href="/view-list-class/{{$class->id}}" class="btn btn-info btn-custom">Danh sách lớp & Danh sách môn học</a>
+                                                    <a style="margin: 5px;" href="/edit-class/{{$class->id}}" class="btn btn-warning btn-custom">Chi tiết & Thêm thành viên & Môn học</a>
+                                                    <!-- <button class="btn btn-danger btn-custom btn-delete" data-id="{{$class->id}}">Xóa</button> -->
+                                                    <!-- <a style="margin: 5px;" href="/edit-class/{{$class->id}}" class="btn btn-primary btn-custom">Báo cáo tổng kết</a> -->
+
                                                 </td>
                                             </tr>
+                                            @endforeach
 
                                         </tbody>
                                     </table>
@@ -101,7 +117,7 @@ dom: '<"html5buttons"B>lTfgitp',
             var id = $(this).data('id');
             swal({
                     title: "Bạn có chắc chắn xóa không?",
-                    text: "Dự án sau khi xóa sẽ không hồi phục lại được.",
+                    text: "Sau khi xóa sẽ không hồi phục lại được.",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
@@ -112,10 +128,10 @@ dom: '<"html5buttons"B>lTfgitp',
                 },
                 function(isConfirm) {
                     if (isConfirm) {
-                        swal("Đã xóa!", "Dự án đã được xóa.", "success");
-                        window.location.href = "/admin-project-list/delete/" + id;
+                        swal("Đã xóa!", "Đã được xóa.", "success");
+                        window.location.href = "/delete-class/" + id;
                     } else {
-                        swal("Đã hủy", "Dự án đã được giữ lại", "error");
+                        swal("Đã hủy", "Đã được giữ lại", "error");
                     }
                 });
         });

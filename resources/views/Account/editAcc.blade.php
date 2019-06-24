@@ -11,11 +11,8 @@
             <li>
                 <a href="/">Admin</a>
             </li>
-            <li>
-                <a href="/list-account">Danh sách tài khoản</a>
-            </li>
             <li class="active">
-                <strong>Chỉnh sửa tài khoản: IDACCOUNT</strong>
+                <strong>Chỉnh sửa tài khoản</strong>
             </li>
         </ol>
     </div>
@@ -31,7 +28,7 @@
             <div class="ibox float-e-margins">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Chỉnh sửa tài khoản</h5>
+                        <h5>Thêm mới một tài khoản cho cán bộ</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -51,50 +48,60 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <form method="get" class="form-horizontal">
+                        <form method="POST" action="/list-account/edit-account/{{$teacher->id}}" enctype="multipart/form-data" class="form-horizontal">
+                            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}">
                             <div class="form-group"><label class="col-sm-2 control-label">Tên cán bộ</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" name="name_teacher" value="{{$teacher->name_teacher}}"></div>
                             </div>
-                            <div class="form-group"><label class="col-sm-2 control-label">Giới tính</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="form-group"><label class="col-sm-2 control-label">Giới tính <br>
+                                </label>
+                                <div class="col-sm-10">
+                                    @if($teacher->sexual = 'male')
+                                    <label> <input type="radio"  value="male" id="optionsRadios1" name="optionsRadios" checked>Nam</label>
+                                    <label> <input type="radio" value="female" id="optionsRadios2" name="optionsRadios">Nữ</label>
+                                    @else
+                                    <label> <input type="radio"  value="male" id="optionsRadios1" name="optionsRadios" >Nam</label>
+                                    <label> <input type="radio" value="female" id="optionsRadios2" name="optionsRadios" checked >Nữ</label>
+
+                                    @endif
+                                </div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">Ngày sinh</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="date" class="form-control" name="dob" value="{{$teacher->dob}}"></div>
                             </div>
 
                             <div class="form-group"><label class="col-sm-2 control-label">Địa chỉ</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" name="address" value="{{$teacher->address}}"></div>
                             </div>
-
+                            <div class="form-group"><label class="col-sm-2 control-label">Số điện thoại liên lạc</label>
+                                <div class="col-sm-10"><input type="text" class="form-control" name="phone" value="{{$teacher->phone_number}}"></div>
+                            </div>
                             <div class="form-group"><label class="col-sm-2 control-label">Email</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="email" class="form-control" name="email" value="{{$teacher->email}}"></div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Role</label>
 
                                 <div class="col-sm-10">
-                                    <select data-placeholder="Choose a Country..." class="chosen-select" tabindex="-1" style="display: none;">
-                                        <option value="">Chọn...</option>
-                                        <option value="Wallis and Futuna">Wallis and Futuna</option>
-                                        <option value="Western Sahara">Western Sahara</option>
-                                        <option value="Yemen">Yemen</option>
-                                        <option value="Zambia">Zambia</option>
-                                        <option value="Zimbabwe">Zimbabwe</option>
+                                    <select data-placeholder="Choose a role..." name="select_role" class="chosen-select" style="display: none;">
+
+                                        @foreach($roles as $role)
+                                        @if($role->id == $teacher->maRole)
+                                        <option value="{{$role->id}}" selected>{{$role->name_roles}}</option>
+                                        @else
+                                        <option value="{{$role->id}}">{{$role->name_roles}}</option>
+
+                                        @endif
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group"><label class="col-sm-2 control-label">Tên tài khoản</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
-                            </div>
-                            <div class="form-group"><label class="col-sm-2 control-label">Mật khẩu</label>
-                                <div class="col-sm-10"><input type="password" class="form-control"></div>
-                            </div>
+
 
                             <div class="form-group">
                                 <div class="col-lg-12">
-                                    <button type="submit" class="btn btn-primary pull-right">Khởi tạo</button>
+                                    <button type="submit" class="btn btn-primary pull-right">Cập nhật</button>
                                 </div>
                             </div>
 

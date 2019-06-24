@@ -48,45 +48,49 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <form method="get" class="form-horizontal">
+                        <form method="POST" action="/add-account/newAcc" enctype="multipart/form-data" class="form-horizontal">
+                            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}">
                             <div class="form-group"><label class="col-sm-2 control-label">Tên cán bộ</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" name="name_teacher" required></div>
                             </div>
-                            <div class="form-group"><label class="col-sm-2 control-label">Giới tính</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                            <div class="form-group"><label class="col-sm-2 control-label">Giới tính <br>
+                                </label>
+                                <div class="col-sm-10">
+                                    <label> <input type="radio"  value="male" id="optionsRadios1" name="optionsRadios" required>Nam</label>
+                                    <label> <input type="radio" value="female" id="optionsRadios2" name="optionsRadios" required>Nữ</label>
+                                </div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">Ngày sinh</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="date" class="form-control" required name="dob"></div>
                             </div>
 
                             <div class="form-group"><label class="col-sm-2 control-label">Địa chỉ</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" required name="address"></div>
                             </div>
-
+                            <div class="form-group"><label class="col-sm-2 control-label">Số điện thoại liên lạc</label>
+                                <div class="col-sm-10"><input type="text" class="form-control" required name="phone"></div>
+                            </div>
                             <div class="form-group"><label class="col-sm-2 control-label">Email</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="email" class="form-control" required name="email"></div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Role</label>
 
                                 <div class="col-sm-10">
-                                    <select data-placeholder="Choose a Country..." class="chosen-select" tabindex="-1" style="display: none;">
-                                        <option value="">Chọn...</option>
-                                        <option value="Wallis and Futuna">Wallis and Futuna</option>
-                                        <option value="Western Sahara">Western Sahara</option>
-                                        <option value="Yemen">Yemen</option>
-                                        <option value="Zambia">Zambia</option>
-                                        <option value="Zimbabwe">Zimbabwe</option>
+                                    <select data-placeholder="Choose a role..." name="select_role" class="chosen-select" style="display: none;">
+                                        @foreach($roles as $role)
+                                        <option value="{{$role->id}}">{{$role->name_roles}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
                             <div class="form-group"><label class="col-sm-2 control-label">Tên tài khoản</label>
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" required name="username"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">Mật khẩu</label>
-                                <div class="col-sm-10"><input type="password" class="form-control"></div>
+                                <div class="col-sm-10"><input type="password" class="form-control" required name="password"></div>
                             </div>
 
                             <div class="form-group">
